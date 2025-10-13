@@ -51,16 +51,110 @@
 
 \section{Describe / Explain:}
 \subsection{Laplace's Equation (include well-posedness, uniqueness, and the mean value proposition).}
-{\color{red}      answer goes here}
+{\color{red} 
+Laplace's equation states that the sum of the first partials are equal to zero, i.e.,
+\begin{equation}
+    0= \frac{\partial u }{\partial x} + \frac{\partial u }{\partial y} + \frac{\partial u }{\partial z}
+\end{equation}
+
+$\newline$
+Well-posedness: there exists a unique solution which depends continuously on non-homogeneous data.
+
+$\newline$
+Uniqueness: solutions to laplace's equation are unique.
+
+$\newline$
+Mean value proposition: the temperature at the origin is the average of the temperature at the boundary.
+
+}
 
 \subsection{Linear Operators, provide an example of something which is a linear operator, and provide an example of something which is not a linear operator.}
-{\color{red}      answer goes here}
+{\color{red} A linear operator, $\U:V \to V$ where $V$ is a vector space, has the property that for any $\vec{x},\vec{y} \in V$ and any scalar $c$ in the field of $V$,
+\begin{enumerate}
+    \item $\U(\vec{x}+\vec{y}) = \U(\vec{x}) + \U(\vec{y})$
+    \item $\U(c\vec{x}) = c\U(\vec{x})$.
+\end{enumerate}
+
+$\newline$
+Example:
+\begin{equation}
+    L(u) = \frac{\partial}{\partial x} \left[ K_0 (x) \frac{\partial u}{\partial x} \right]
+\end{equation}
+
+$\newline$
+Non-Example:
+\begin{equation}
+    L(u) = \frac{\partial}{\partial x} \left[ K_0 (u,x) \frac{\partial u}{\partial x} \right]
+\end{equation}
+where $K_0$ is a non-constant function.
+
+
+
+}
 
 \section{Prove Orthogonality of Sines.}
-{\color{red}      answer goes here}
+{\color{red} We want to show that
+
+\begin{align}
+    \int_0^L sin(\frac{n\pi x}{L}) sin(\frac{m\pi x}{L}) = \begin{cases}
+        0 \text{; if }n\neq m\\
+        \frac{L}{2}\text{; if }n=m.
+    \end{cases}\\
+    \int_0^L cos(\frac{n\pi x}{L}) cos(\frac{m\pi x}{L}) = \begin{cases}
+        0 \text{ ; if }n\neq m\\
+        \frac{L}{2}\text{; if }n=m\neq 0\\
+        L\text{ ; if }n=m =0
+    \end{cases}
+\end{align}
+
+$\newline$
+Starting off with (4), if $n = m$, then 
+\begin{equation}
+    \int_0^L sin^2(\frac{n\pi x}{L})dx = \int_0^L \frac{1}{2}(1-cos(2\frac{n\pi x}{L}))dx
+\end{equation}
+\begin{align}
+    &= \frac{1}{2}\left[x-\frac{L}{2n\pi}sin(\frac{2n\pi x}{L})\right]\bigg|_0^L\\
+    &= \frac{1}{2}\left[ L - 0 \right] = \frac{L}{2}
+\end{align}
+as desired. Alternatively, if $n \neq m$, then
+\begin{align}
+    &\int_0^L sin(\frac{n\pi x}{L})sin(\frac{m\pi x}{L})dx\\
+    &= \int_0^L \frac{1}{2}[cos(\frac{n\pi x}{L}-\frac{m\pi x}{L}) - cos(\frac{n\pi x}{L}+\frac{m\pi x}{L})]dx\\
+    &= \frac{1}{2}\int_0^L cos(\frac{\pi x(n-m)}{L})- cos(\frac{\pi x(n+m)}{L})dx\\
+    &= \frac{1}{2}[\frac{L}{\pi(n-m)}sin(\frac{\pi x (n-m)}{L})-\frac{L}{\pi(n-m)}sin(\frac{\pi x (n-m)}{L})]\bigg|_0^L\\
+    &= 0 -0 = 0
+\end{align}
+as desired.
+
+$\newline$
+Moving to (5), if $n\neq m$, it works pretty much the same way as with sines. If $n = m \neq 0$, then 
+\begin{align}
+    &\int_0^L cos^2(\frac{n\pi x}{L})dx =\\
+    &= \int_0^L \frac{1}{2}(1+sin(\frac{2n\pi x}{L}))dx\\
+    &= \frac{1}{2}[x-\frac{L}{2n\pi}cos(\frac{2n \pi x}{L})]\bigg|_0^L \\
+    &= \frac{1}{2}[L + (-1 + 1)]\\
+    &= \frac{L}{2}
+\end{align}
+as desired.
+Then finally, if $n=m=0$,
+\begin{align}
+    \int_0^L cos^2(0)dx = \int_0^L 1dx = L.
+\end{align}
+
+
+
+
+}
 
 \section{Solve $\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2}$ with certain BC's and IC's, addressing $\lambda >0, = 0, <0$.}
-{\color{red}      answer goes here}
+\subsection{$u(0,t) = u(L,t) = 0$}
+{\color{red} Gives sine solutions.}
+
+\subsection{$\frac{\partial u}{\partial x}(0,t) = 0 = \frac{\partial u}{\partial x}(L,t)$}
+{\color{red} Gives cosine solutions.}
+
+\subsection{$u(0,t) = u(L,t) = 0$ and $\frac{\partial u}{\partial x}(0,t) = 0 = \frac{\partial u}{\partial x}(L,t)$}
+{\color{red} Gives sine and cosine solutions.}
 
 \section{Solve $\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2}$ at equilibrium in polar coordinates over the interval $(-L, L)$.}
 {\color{red}     
@@ -92,7 +186,7 @@ We also get the following BCs for free:
 
 }
 
-\section{Solve Laplace's Equation on a rectangle, with LHS, Top, and Bottom $=0$, RHS $= f_2(y)$.}
+\section{Solve Laplace's Equation on a rectangle, with LHS, Top, and Bottom $=0$, RHS $= g_2(y)$.}
 
 
 
