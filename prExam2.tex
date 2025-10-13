@@ -1,0 +1,155 @@
+\documentclass[12 pt]{article}        	%sets the font to 12 pt and says this is an article (as opposed to book or other documents)
+\usepackage{amsfonts, amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{esint}
+\usepackage{float}
+\usepackage{mathrsfs}
+
+\usepackage[left=2cm,right=2.5cm,top=2cm,bottom=1.5cm]{geometry}
+
+\pagestyle{myheadings}
+
+\newcommand{\eqn}[0]{\begin{array}{rcl}}%begin an aligned equation - allows for aligning = or inequalities.  Always use with $$ $$
+\newcommand{\eqnend}[0]{\end{array} }  	%end the aligned equation
+
+\newcommand{\qed}[0]{$\square$}
+
+% personalized commands
+\newcommand{\inv}{^{-1}}
+\newcommand{\bij}{\mathrlap{\hookrightarrow}\rightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\z}{\mathbb Z}
+\newcommand{\real}{\mathbb R}
+\newcommand{\q}{\mathbb Q}
+\newcommand{\complex}{\mathbb C}
+\newcommand{\n}{\mathbb N}
+\newcommand{\cont}{\lightning}
+\newcommand{\osub}{\stackrel{\circ}{\subset}}
+\newcommand{\U}{\mathscr{U}}
+\newcommand{\B}{\mathscr{B}}
+
+\usepackage{amsthm} % Recommended for theorem-like environments
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{ex}{Example}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+
+\title{Math 440 Exam 2 Practice Test}
+\begin{document}
+\maketitle
+\begin{center}
+    Timothy Tarter
+
+    James Madison University
+
+    Department of Mathematics
+\end{center}
+
+\section{Describe / Explain:}
+\subsection{Laplace's Equation (include well-posedness, uniqueness, and the mean value proposition).}
+{\color{red}      answer goes here}
+
+\subsection{Linear Operators, provide an example of something which is a linear operator, and provide an example of something which is not a linear operator.}
+{\color{red}      answer goes here}
+
+\section{Prove Orthogonality of Sines.}
+{\color{red}      answer goes here}
+
+\section{Solve $\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2}$ with certain BC's and IC's, addressing $\lambda >0, = 0, <0$.}
+{\color{red}      answer goes here}
+
+\section{Solve $\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2}$ at equilibrium in polar coordinates over the interval $(-L, L)$.}
+{\color{red}     
+Note that the 1D heat equation can be expressed in polar coordinate with axial symmetry (meaning that $\frac{\partial^2 u}{\partial \theta^2} =0$) as follows:
+\begin{equation}
+    0 = \frac{1}{r}\frac{\partial}{\partial r}(r \frac{\partial u }{\partial r}).
+\end{equation}
+We also get the following BCs for free:
+\begin{align}
+    u(-L) &= u(L)\\
+    \frac{\partial u }{\partial r}(-L) &= \frac{\partial u }{\partial r}(L)\\
+    |u(0)|&<\infty.
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+\section{Solve Laplace's Equation on a rectangle, with LHS, Top, and Bottom $=0$, RHS $= f_2(y)$.}
+
+
+
+
+\section{Extra Resources Which You Gotta Know or You Might Be Cooked:}
+{\color{blue} 
+Trig Identities: 
+\begin{align}
+    sin(a+b) = sin(a)cos(b)+cos(a)sin(b)\\
+    cos(a+b) = cos(a)cos(b) - sin(a)sin(b)\\
+    sin(a-b) = sin(a)cos(b)-cos(a)sin(b)\\
+    cos(a-b) = cos(a)cos(b) + sin(a)sin(b)
+\end{align}
+
+$\newline$
+If BC's are
+\begin{itemize}
+    \item $u(0,t) = 0 = u(L,t)$ then 
+    \begin{equation}
+        u(x,t) = \sum_{n=1}^\infty A_n e^{-kt(\frac{n\pi}{L})^2}sin(\frac{n\pi x}{L})
+    \end{equation}
+    \item $\frac{\partial u}{\partial x}(0,t) = 0 = \frac{\partial u}{\partial x}(L,t)$ then 
+    \begin{equation}
+        u(x,t) = \sum_{n=1}^\infty B_n e^{-kt(\frac{n\pi}{L})^2}cos(\frac{n\pi x}{L})
+    \end{equation}
+\end{itemize}
+where 
+\begin{align}
+    A_n = \frac{2}{L}\int_0^L &f(x)sin(\frac{n \pi x}{L})dx\\
+    &\text{and}\\
+    B_n = \frac{2}{L}\int_0^L &f(x)cos(\frac{n \pi x}{L})dx.
+\end{align}
+
+$\newline$
+Orthogonality of sines and cosines (formulas):
+\begin{align}
+    \int_0^L sin(\frac{n\pi x}{L}) sin(\frac{m\pi x}{L}) = \begin{cases}
+        0 \text{; if }n\neq m\\
+        \frac{L}{2}\text{; if }n=m.
+    \end{cases}\\
+    \int_0^L cos(\frac{n\pi x}{L}) cos(\frac{m\pi x}{L}) = \begin{cases}
+        0 \text{ ; if }n\neq m\\
+        \frac{L}{2}\text{; if }n=m\neq 0\\
+        L\text{ ; if }n=m =0
+    \end{cases}
+\end{align}
+
+
+
+
+
+
+
+
+
+
+}
+
+
+\end{document}
