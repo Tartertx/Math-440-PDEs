@@ -158,25 +158,119 @@ Then finally, if $n=m=0$,
 
 \section{Solve $\frac{\partial u}{\partial t} = k \frac{\partial^2 u}{\partial x^2}$ at equilibrium in polar coordinates over the interval $(-L, L)$.}
 {\color{red}     
-Note that the 1D heat equation can be expressed in polar coordinate with axial symmetry (meaning that $\frac{\partial^2 u}{\partial \theta^2} =0$) as follows:
+
+We begin with the one-dimensional heat equation
+\[
+u_t = \kappa u_{xx}, \qquad x \in [-L, L],
+\]
+and bend the wire so that its endpoints are in perfect thermal contact:
+\[
+u(-L, t) = u(L, t), \qquad u_x(-L, t) = u_x(L, t).
+\]
+These are the \emph{periodic boundary conditions}, corresponding physically to a wire bent into a circle of circumference \(2L\).
+
+$\newline$
+At equilibrium, the temperature no longer depends on time, so
+\[
+u_t = 0 \quad \Longrightarrow \quad u_{xx} = 0.
+\]
+Integrating twice gives
+\[
+u_{\text{eq}}(x) = A x + B.
+\]
+The periodicity condition \(u_{\text{eq}}(-L) = u_{\text{eq}}(L)\) yields
+\[
+A(-L) + B = A(L) + B \quad \Longrightarrow \quad A = 0.
+\]
+Hence
+\[
+\boxed{u_{\text{eq}}(x) = B = \text{constant}.}
+\]
+
+$\newline$
+To determine \(B\), note that the total heat (or average temperature) is conserved for periodic boundary conditions:
+\[
+\frac{d}{dt}\int_{-L}^{L} u(x,t)\,dx
+= \kappa\,[u_x(x,t)]_{x=-L}^{x=L}
+= \kappa\,(u_x(L,t) - u_x(-L,t)) = 0.
+\]
+Thus, the equilibrium constant equals the initial mean temperature:
+\[
+\boxed{
+u_{\text{eq}}(x) = \frac{1}{2L}\int_{-L}^{L} u_0(x)\,dx.}
+\]
+
+\[
+\text{Therefore, the bent wire reaches a uniform equilibrium temperature equal to its initial average.}
+\]
+
+}
+
+\section{Solve Laplace's Equation on a rectangle, with LHS, Top, and Bottom $=0$, RHS $= g_2(y)$.}
+
+{\color{red}  We want to start with Laplace's 2D equation,
 \begin{equation}
-    0 = \frac{1}{r}\frac{\partial}{\partial r}(r \frac{\partial u }{\partial r}).
+    0= k[\frac{\partial^2 u}{\partial x} + \frac{\partial^2 u}{\partial y}].
 \end{equation}
-We also get the following BCs for free:
+If $u(x,t) = X(x)Y(y)$, then
+\begin{equation}
+    0 = X''Y+XY''
+\end{equation}
+implies that
+\begin{equation}
+    \frac{X''}{X}=\lambda = \frac{-Y''}{Y}.
+\end{equation}
+Thus,
+\begin{equation}
+    X''-\lambda X = 0
+\end{equation}
+and
+\begin{equation}
+    Y''+\lambda Y=0
+\end{equation}
+are our system of ODE's. Now we want to specify our boundary conditions. 
+
+$\newline$
+This results in the following BCs:
+\begin{itemize}
+    \item $u(0,y) = 0$
+    \item $u(L,y) = g_2(y)$
+    \item $u(x,0) = 0$
+    \item $u(x,H)=0$.
+\end{itemize}
+Accordingly, 
+\begin{equation}
+    Y(y) = \sum_{n=1}^\infty A_n sin(\frac{n\pi y}{H}).
+\end{equation}
+Then,
+\begin{equation}
+    X''-\lambda X = 0
+\end{equation}
+implies that 
+\begin{equation}
+    X(x) = Asinh(\sqrt{\lambda}x) + B cosh(\sqrt{\lambda} x).
+\end{equation}
+Since 
+\begin{equation}
+    X(0) = B = 0,
+\end{equation}
+then 
+\begin{equation}
+    X(x) = Asinh(\frac{n\pi x}{H}).
+\end{equation}
+But,
 \begin{align}
-    u(-L) &= u(L)\\
-    \frac{\partial u }{\partial r}(-L) &= \frac{\partial u }{\partial r}(L)\\
-    |u(0)|&<\infty.
+    X(L) = g_2(y) = Asinh(\frac{n\pi L}{H}) \\
+    A = \frac{g_2(y)}{sinh(\frac{n\pi L}{H})}.
 \end{align}
-
-
-
-
-
-
-
-
-
+So 
+\begin{equation}
+    u(x,y) = \sum_{n=1}^\infty A_n sin(\frac{n\pi y}{H})\frac{g_2(y)sinh(\frac{n\pi x}{H})}{sinh(\frac{n\pi L}{H})}
+\end{equation}
+where
+\begin{equation}
+    A_n = \frac{2}{H}\int_0^Hg_2(y)sin(\frac{n\pi y}{H})dy.
+\end{equation}
 
 
 
@@ -185,8 +279,6 @@ We also get the following BCs for free:
 
 
 }
-
-\section{Solve Laplace's Equation on a rectangle, with LHS, Top, and Bottom $=0$, RHS $= g_2(y)$.}
 
 
 
@@ -210,7 +302,7 @@ If BC's are
     \end{equation}
     \item $\frac{\partial u}{\partial x}(0,t) = 0 = \frac{\partial u}{\partial x}(L,t)$ then 
     \begin{equation}
-        u(x,t) = \sum_{n=1}^\infty B_n e^{-kt(\frac{n\pi}{L})^2}cos(\frac{n\pi x}{L})
+        u(x,t) = \sum_{n=0}^\infty B_n e^{-kt(\frac{n\pi}{L})^2}cos(\frac{n\pi x}{L})
     \end{equation}
 \end{itemize}
 where 
